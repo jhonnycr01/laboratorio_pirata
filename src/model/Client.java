@@ -34,4 +34,71 @@ public class Client {
 		}
 	}
 
+	public int getMercantilSerial() {
+		return mercantilSerial;
+	}
+
+	public void setMercantilSerial(int mercantilSerial) {
+		this.mercantilSerial = mercantilSerial;
+	}
+
+	public int getTotalKg() {
+		return totalKg;
+	}
+
+	public void setTotalKg(int totalKg) {
+		this.totalKg = totalKg;
+	}
+
+	public int getTotalValue() {
+		return totalValue;
+	}
+
+	public void setTotalValue(int totalValue) {
+		this.totalValue = totalValue;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
+	public String getExpeditionDate() {
+		return expeditionDate;
+	}
+
+	public void setExpeditionDate(String expeditionDate) {
+		this.expeditionDate = expeditionDate;
+	}
+
+	public ClientType getClientType() {
+		return clientType;
+	}
+
+	public void setClientType(ClientType clientType) {
+		this.clientType = clientType;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj.getClass() == Client.class) {
+			Client client_compare = (Client) obj;
+			if(client_compare.getMercantilSerial() == this.getMercantilSerial()
+					&&
+			client_compare.getClientName().equalsIgnoreCase(this.getClientName())
+					) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
+	
+
 }

@@ -16,8 +16,12 @@ public class Load {
 		this.numberBoxes = numberBoxes;
 		this.weigthBoxesGrams = weigthBoxesGrams;
 		this.clientLoad = clientLoad;
+		this.calculatePrice();
 		
-		switch(typeLoad) {
+	}
+	
+	private void calculatePrice() {
+		switch(this.typeLoad) {
 			case Danger:
 				price = 390_000 * this.getWeightKg();				
 			break;
@@ -29,6 +33,24 @@ public class Load {
 			case NoPerishable:
 				price = 80_000 * this.getWeightKg(); 				
 			break;
+		}
+		
+		switch(this.clientLoad.getClientType()) {
+			case Silver:
+				if(this.typeLoad == TypeLoad.Perishable) {
+					price -= price * (1.5 / 100.0);
+				}
+				break;
+			case Gold:
+				if(this.typeLoad == TypeLoad.NoPerishable ||
+				this.typeLoad == TypeLoad.Perishable) {
+					price -= price * (3 / 100.0);
+				}
+				break;
+			case Platinum:
+				price -= price * (5 / 100.0);
+				break;
+		
 		}
 	}
 	

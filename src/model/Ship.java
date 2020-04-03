@@ -11,10 +11,24 @@ public class Ship {
 	private String name;
 	private double loadMaxKg;
 	private ArrayList<Load> loads;
+	private ArrayList<Client> clients;
 	
+	
+	public ArrayList<Client> getClients() {
+		return clients;
+	}
+	
+	public void addClient(Client client) {
+		this.clients.add(client);
+	}
+
+
+
 	public Ship(String name, int loadMaxKg) {
 		this.name = name;
 		this.loadMaxKg = loadMaxKg;
+		this.loads = new ArrayList<>();
+		this.clients = new ArrayList<>();
 	}
 	
 	
@@ -47,51 +61,26 @@ public class Ship {
 		return loads;
 	}
 
-
+	public void downloadShip() {
+		this.loads.clear();
+	}
 
 	public void addLoad(Load load) {		
 		if(this.validateLoad(load)) {
 			this.loads.add(load);
+			System.out.println("the total value of the load is: " +
+			this.getTotalValueByClient(load.getClientLoad()));
 		}
 	}
 	
-	public void setSail() {
-		if(this.canSetSail()) {
-			for(Load load: this.loads) {
-				load.getClientLoad().updatedValues(load);
+	private double getTotalValueByClient(Client client) {
+		double totalValue = 0;
+		for(Load load: this.loads) {
+			if(load.getClientLoad().equals(client)) {
+				totalValue += load.getPrice(); 
 			}
-		}else {
-			System.out.println("can't set sail");
 		}
-	}
-	
-	public void updateLevelClients() {
-		for()
-	}
-	
-	public boolean canSetSail() {
-		boolean validate = false;
-		if(this.validateQunatityLoads() && this.validateWeightLoads()) {
-			validate = true;
-		}
-		return validate;
-	}
-	
-	private boolean validateWeightLoads() {
-		boolean validate = false;
-		int loadMin = 12_000;
-		if(this.getWeightLoadKg()>=loadMin) {
-			validate = true;
-		}
-		return validate;
-	}
-	
-	private boolean validateQunatityLoads() {
-		boolean validate = false;
-		if(loads.size()>=2) {
-			validate = true;
-		}
-		return validate;
+		return totalValue;
 	}
 	
 	private boolean validateLoad(Load load) {
@@ -102,6 +91,7 @@ public class Ship {
 		return validate;
 		
 	}
+	
 	private boolean validateTypeLoad(Load load) {
 		boolean validate = true;
 		
@@ -123,16 +113,6 @@ public class Ship {
 	
 	}
 	
-	private boolean validateWeightLoad(Load load) {
-		boolean validate = true;
-		double weigthTotal = this.getWeightLoadKg() + load.getWeightKg(); 
-		if( weigthTotal > loadMaxKg ) {
-			System.out.println("the load can not be add becuase it overcome the maximum load of the ship");
-			validate = false;
-		}
-		return validate;
-	}
-	
 	public boolean containsTypeLoad(TypeLoad typeLoad) {
 		boolean containTypeLoad = false;
 		for(Load load: loads) {
@@ -144,6 +124,16 @@ public class Ship {
 		return containTypeLoad;
 	}
 	
+	private boolean validateWeightLoad(Load load) {
+		boolean validate = true;
+		double weigthTotal = this.getWeightLoadKg() + load.getWeightKg(); 
+		if( weigthTotal > loadMaxKg ) {
+			System.out.println("the load can not be add becuase it overcome the maximum load of the ship");
+			validate = false;
+		}
+		return validate;
+	}
+	
 	public double getWeightLoadKg() {
 		double weightKg =0;
 		for(Load load: loads) {
@@ -152,6 +142,61 @@ public class Ship {
 		return weightKg;
 		
 	}
+	
+	private boolean validateWeightLoads() {
+		boolean validate = false;
+		int loadMin = 12_000;
+		if(this.getWeightLoadKg()>=loadMin) {
+			validate = true;
+		}
+		return validate;
+	}
+	
+	
+	
+	public void setSail() {
+		if(this.canSetSail()) {
+			for(Load load: this.loads) {
+				load.getClientLoad().updatedValues(load);
+			}
+		}else {
+			System.out.println("can't set sail");
+		}
+	}
+	
+	public void updateLevelClients() {
+		for(Client client: this.clients) {
+			client.updateLevel();
+		}
+	}
+	
+	public boolean canSetSail() {
+		boolean validate = false;
+		if(this.validateQunatityLoads() && this.validateWeightLoads()) {
+			validate = true;
+		}
+		return validate;
+	}
+	
+	
+	
+	
+	private boolean validateQunatityLoads() {
+		boolean validate = false;
+		if(loads.size()>=2) {
+			validate = true;
+		}
+		return validate;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
