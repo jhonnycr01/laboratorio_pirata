@@ -5,13 +5,12 @@ public class Load {
 	
 	private TypeLoad typeLoad;
 	private int numberBoxes;
-	private int weigthBoxesGrams;
+	private double weigthBoxesGrams;
 	private Client clientLoad;
 	private double price;
 	
-	public Load(double totalValue, int totalKg, TypeLoad typeLoad, int numberBoxes, int weigthBoxesGrams,
+	public Load(TypeLoad typeLoad, int numberBoxes, double weigthBoxesGrams,
 			Client clientLoad) {
-		super();
 		this.typeLoad = typeLoad;
 		this.numberBoxes = numberBoxes;
 		this.weigthBoxesGrams = weigthBoxesGrams;
@@ -55,7 +54,7 @@ public class Load {
 	}
 	
 	public double getWeightKg() {
-		return (this.numberBoxes * this.weigthBoxesGrams) / 1000.0;
+		return (this.numberBoxes * this.weigthBoxesGrams) / 1000.0;		
 	}
 
 	public TypeLoad getTypeLoad() {
@@ -74,7 +73,7 @@ public class Load {
 		this.numberBoxes = numberBoxes;
 	}
 
-	public int getWeigthBoxesGrams() {
+	public double getWeigthBoxesGrams() {
 		return weigthBoxesGrams;
 	}
 

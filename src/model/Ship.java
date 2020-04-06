@@ -70,14 +70,14 @@ public class Ship {
 			this.loads.add(load);
 			System.out.println("the total value of the load is: " +
 			this.getTotalValueByClient(load.getClientLoad()));
-		}
+		} 
 	}
 	
 	private double getTotalValueByClient(Client client) {
 		double totalValue = 0;
 		for(Load load: this.loads) {
 			if(load.getClientLoad().equals(client)) {
-				totalValue += load.getPrice(); 
+				totalValue += load.getPrice();				
 			}
 		}
 		return totalValue;
@@ -98,13 +98,13 @@ public class Ship {
 		switch(load.getTypeLoad()) {
 			case Danger:
 				if(this.containsTypeLoad(TypeLoad.Perishable)) {
-					System.out.println();
+					System.out.println("don't add the load because already load type of Perishable");
 					validate = false;
 				}
 				break;
 			case Perishable:
 				if(this.containsTypeLoad(TypeLoad.Danger)) {
-					System.out.println();
+					System.out.println("don't add the load because already load type of Danger");
 					validate = false;
 				}
 				break;
@@ -172,7 +172,7 @@ public class Ship {
 	
 	public boolean canSetSail() {
 		boolean validate = false;
-		if(this.validateQunatityLoads() && this.validateWeightLoads()) {
+		if(this.validateQunatityLoads() || this.validateWeightLoads()) {
 			validate = true;
 		}
 		return validate;
