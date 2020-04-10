@@ -113,7 +113,7 @@ public class Main {
 	}
 	/**
 	 * this method check that the ship is ready to sail
-	 * @ param ship must be initialized
+	 * @param ship must be initialized
 	 */
 	public static void shipCanSetSail(Ship ship) {
 		Scanner sc = new Scanner(System.in);
@@ -194,6 +194,8 @@ public class Main {
 	}
 	/**
 	 * this method return the type of load based on it index
+	 * @param index for a Type load
+	 * @return Type of load found with index
 	 */
 	public static TypeLoad getTypeLoadByIndex(int index) {
 		return TypeLoad.values()[index-1];
@@ -209,6 +211,7 @@ public class Main {
 	}
 	/**
 	 * this method display the list of the client showing its name and level
+	 * @param ship to which clients are consulted to list them waiting to press key to continue
 	 */
 	public static void listClientsWithLevels(Ship ship){
 		Scanner sc = new Scanner(System.in);
@@ -217,6 +220,7 @@ public class Main {
 	}
 	/**
 	 * this method displays the type of client and name base on its index 
+	 * @param ship to which clients are consulted to list them
 	 */
 	public static void listClients(Ship ship) {
 		

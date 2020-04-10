@@ -57,6 +57,7 @@ public class Load {
 	}
 	/**
 	 * this method calculated the weight of the load in kg 
+	 * @return double total weight of the load
 	 */
 	public double getWeightKg() {
 		return (this.numberBoxes * this.weigthBoxesGrams) / 1000.0;		

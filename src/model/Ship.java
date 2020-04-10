@@ -131,6 +131,7 @@ public class Ship {
 	/**
 	 * this method returns a boolean value that checks the type of loads are not the same
 	 * @param typeLoad must be initialized 
+	 * @return boolean if the ship contains a Type specific load
 	 */
 	public boolean containsTypeLoad(TypeLoad typeLoad) {
 		boolean containTypeLoad = false;
@@ -157,6 +158,7 @@ public class Ship {
 	}
 	/**
 	 * this method return the weightKg of the loads 
+	 * @return total weight of loads
 	 */
 	public double getWeightLoadKg() {
 		double weightKg =0;
@@ -200,7 +202,8 @@ public class Ship {
 		}
 	}
 	/**
-	 * this method validates if the ship can sail checking the methos validateQuantityLoads and validateWeigthLoads
+	 * this method validates if the ship can sail checking the methods validateQuantityLoads and validateWeigthLoads
+	 * @return boolean that determines if the ship can set sail
 	 */
 	public boolean canSetSail() {
 		boolean validate = false;
