@@ -18,7 +18,10 @@ public class Load {
 		this.calculatePrice();
 		
 	}
-	
+	/**
+	 * this methos allows to calculate the price of the load by the type and the weight and include the discoun      
+	 * @param typeLoad must be initialized
+	 */
 	private void calculatePrice() {
 		switch(this.typeLoad) {
 			case Danger:
@@ -52,7 +55,9 @@ public class Load {
 		
 		}
 	}
-	
+	/**
+	 * this method calculated the weight of the load in kg 
+	 */
 	public double getWeightKg() {
 		return (this.numberBoxes * this.weigthBoxesGrams) / 1000.0;		
 	}

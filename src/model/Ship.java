@@ -60,11 +60,18 @@ public class Ship {
 	public ArrayList<Load> getLoads() {
 		return loads;
 	}
-
+  
+	/**
+	 * this method clears all the elements in the list loads
+	 */
 	public void downloadShip() {
 		this.loads.clear();
 	}
-
+    
+	/**
+	 * this method adds a load in the arrayList loads checking the method validateLoad
+	 * @param load must be initialized
+	 */
 	public void addLoad(Load load) {		
 		if(this.validateLoad(load)) {
 			this.loads.add(load);
@@ -72,7 +79,10 @@ public class Ship {
 			this.getTotalValueByClient(load.getClientLoad()));
 		} 
 	}
-	
+	/**
+	 * this method returns the total value of all the loads from a same client 
+	 * @param client must be initialized
+	 */
 	private double getTotalValueByClient(Client client) {
 		double totalValue = 0;
 		for(Load load: this.loads) {
@@ -82,7 +92,10 @@ public class Ship {
 		}
 		return totalValue;
 	}
-	
+	/**
+	 * this method validates if a load is able to be add to the ship
+	 * @param load must be initialized
+	 */
 	private boolean validateLoad(Load load) {
 		boolean validate = false;
 		if(this.validateTypeLoad(load) && this.validateWeightLoad(load)) {
@@ -91,7 +104,10 @@ public class Ship {
 		return validate;
 		
 	}
-	
+	/**
+	 * this method validates the type of loads of the ship are correct
+	 * @param load must be initialized
+	 */
 	private boolean validateTypeLoad(Load load) {
 		boolean validate = true;
 		
@@ -112,7 +128,10 @@ public class Ship {
 		return validate;
 	
 	}
-	
+	/**
+	 * this method returns a boolean value that checks the type of loads are not the same
+	 * @param typeLoad must be initialized 
+	 */
 	public boolean containsTypeLoad(TypeLoad typeLoad) {
 		boolean containTypeLoad = false;
 		for(Load load: loads) {
@@ -123,7 +142,10 @@ public class Ship {
 		}
 		return containTypeLoad;
 	}
-	
+	/**
+	 * this method return validated the weigth of the load is enough to add the load 
+	 * @param load must be initialized
+	 */
 	private boolean validateWeightLoad(Load load) {
 		boolean validate = true;
 		double weigthTotal = this.getWeightLoadKg() + load.getWeightKg(); 
@@ -133,7 +155,9 @@ public class Ship {
 		}
 		return validate;
 	}
-	
+	/**
+	 * this method return the weightKg of the loads 
+	 */
 	public double getWeightLoadKg() {
 		double weightKg =0;
 		for(Load load: loads) {
@@ -142,7 +166,9 @@ public class Ship {
 		return weightKg;
 		
 	}
-	
+	/**
+	 * this method returns validated that the weight of the load is enought 
+	 */
 	private boolean validateWeightLoads() {
 		boolean validate = false;
 		int loadMin = 12_000;
@@ -153,7 +179,9 @@ public class Ship {
 	}
 	
 	
-	
+	/**
+	 * this method validates if the ship can sail by checking the method canSetSail
+	 */
 	public void setSail() {
 		if(this.canSetSail()) {
 			for(Load load: this.loads) {
@@ -163,13 +191,17 @@ public class Ship {
 			System.out.println("can't set sail");
 		}
 	}
-	
+	/**
+	 * this methos allows the user to updated the level of the client 
+	 */
 	public void updateLevelClients() {
 		for(Client client: this.clients) {
 			client.updateLevel();
 		}
 	}
-	
+	/**
+	 * this method validates if the ship can sail checking the methos validateQuantityLoads and validateWeigthLoads
+	 */
 	public boolean canSetSail() {
 		boolean validate = false;
 		if(this.validateQunatityLoads() || this.validateWeightLoads()) {
@@ -180,7 +212,9 @@ public class Ship {
 	
 	
 	
-	
+	/**
+	 * this method return validate if quantity of the loads is enougth
+	 */
 	private boolean validateQunatityLoads() {
 		boolean validate = false;
 		if(loads.size()>=2) {

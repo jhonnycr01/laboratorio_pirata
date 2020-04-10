@@ -87,14 +87,20 @@ public class Main {
 		}
 	}
 	
-	
+	/**
+	 * this method displays the total weight of the ship
+	 * @param ship must be initialized 
+	 */
 	public static void getTotalWeightShip(Ship ship) {
 		Scanner sc = new Scanner(System.in);
 		double total = ship.getWeightLoadKg();
 		System.out.println("The total weight is: "+ total +" Kg");
 		sc.nextLine();
 	}
-	
+	/**
+	 * this method allows to download the ship checking setSail method 
+	 * @param ship must be initialized 
+	 */
 	public static void downloadShip(Ship ship) {
 		Scanner sc = new Scanner(System.in);
 		ship.setSail();		
@@ -105,7 +111,10 @@ public class Main {
 		
 		sc.nextLine();
 	}
-	
+	/**
+	 * this method check that the ship is ready to sail
+	 * @ param ship must be initialized
+	 */
 	public static void shipCanSetSail(Ship ship) {
 		Scanner sc = new Scanner(System.in);
 		if(ship.canSetSail()) {
@@ -115,7 +124,10 @@ public class Main {
 		}
 		sc.nextLine();
 	}
-	
+	/**
+	 * this method allows to updated the categorie of the client checking the method updateLevelClients
+	 * @param ship must be initialized
+	 */
 	public static void updatedClientCategories(Ship ship){
 		Scanner sc = new Scanner(System.in);
 		ship.updateLevelClients();
@@ -123,6 +135,10 @@ public class Main {
 		sc.nextLine();
 	}
 	
+	/**
+	 * this method creates clients in the ship
+	 * @param ship must be initialized
+	 */
 	public static void createClient(Ship ship) {
 		Scanner sc = new Scanner(System.in);
 
@@ -144,7 +160,10 @@ public class Main {
 		
 	}
 	
-	
+	/**
+	 * this methos alows to create a load in the ship 
+	 * @param ship must be initialized
+	 */
 	public static void creteLoad(Ship ship) {
 		Scanner sc = new Scanner(System.in);
 		
@@ -173,24 +192,32 @@ public class Main {
 		ship.addLoad(load);
 		
 	}
-	
+	/**
+	 * this method return the type of load based on it index
+	 */
 	public static TypeLoad getTypeLoadByIndex(int index) {
 		return TypeLoad.values()[index-1];
 	}
-	
+	/**
+	 * this method displays the list of the type of loads 
+	 */
 	public static void listTypeLoads() {
 		System.out.println("1. Danger");
 		System.out.println("2. Perishable");
 		System.out.println("3. No Perishable");
 		
 	}
-	
+	/**
+	 * this method display the list of the client showing its name and level
+	 */
 	public static void listClientsWithLevels(Ship ship){
 		Scanner sc = new Scanner(System.in);
 		listClients(ship);
 		sc.nextLine();
 	}
-	
+	/**
+	 * this method displays the type of client and name base on its index 
+	 */
 	public static void listClients(Ship ship) {
 		
 		int index = 1;

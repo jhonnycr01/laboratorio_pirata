@@ -17,12 +17,17 @@ public class Client {
 		this.expeditionDate= expeditionDate;
 		this.clientType= ClientType.Normal;
 	}
-	
+	/**
+	 * this method updates the values of totalKg and totalValue
+	 * @param load must be initialized 
+	 */
 	public void updatedValues(Load load) {
 		this.totalKg += load.getWeightKg();
 		this.totalValue += load.getPrice();
 	}
-	
+	/**
+	 * this methid allows to update the level of the client based on the total value and totalKg
+	 */
 	public void updateLevel() {
 		//conditions for level up 
 		if(this.totalKg >= 35_000 && this.totalKg < 55_000 ) {
